@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 5em;
+    text-align: center;
+    transition: 1s;
+    padding: 30px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.rectangle {
+    width: 70%;
+    height: 200px;
+    background-color: purple;
+    transition: 1s;
+}
+
+.rectangle-1 {
+    width: 70%;
+    height: 200px;
+    background-color: purple;
+    margin-top: 10px;
+    display: none;
+    transition: all 0.5s;
+}
+
+.rectangle-1-visible {
+    display: block;
+}
+
+.rectangle-2 {
+    width: 70%;
+    height: 200px;
+    background-image: linear-gradient(purple, yellow);
+    margin-top: 10px;
+    transition: all 2s;
+}
+
+.rectangle-2-fade {
+    opacity: 0
+}
+
+.rectangle-3 {
+    width: 70%;
+    height: 200px;
+    background-image: linear-gradient(yellow, purple);
+    margin-top: 10px;
+    transition: all 0.5s;
+}
+
+.rectangle-3-slide {
+    transform: translateX(1620px);
+    width: 0;
+    opacity: 0;
+}
+
+@starting-style {
+
+    h1,
+    .rectangle {
+        opacity: 0;
+        transform: translateX(-50px)
+    }
+
+    button {
+        opacity: 0;
+        transform: translateX(50px)
+    }
+
+    .rectangle-1 {
+        opacity: 0;
+        transform: scale(0)
+    }
+
+    .rectangle-2 {
+        opacity: 0;
+    }
+
+    .rectangle-3 {
+        opacity: 0;
+        transform: translateX(-200px)
+    }
+
+}
+
+.rectangle-gold {
+    background-color: gold;
+}
+
+button {
+    width: 200px;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 20px;
+    transition: 1s;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
