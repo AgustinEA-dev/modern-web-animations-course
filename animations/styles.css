@@ -1,0 +1,98 @@
+:root {
+    --background-color: greenyellow;
+    --background-color1: teal;
+
+    --font-size: 30px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1d1d1d;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    padding: 20px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    width: 90%;
+    margin: 20px;
+    padding: 15px;
+    border: none;
+    background-color: var(--background-color1);
+    color: var(--background-color);
+    font-size: var(--font-size);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    letter-spacing: 30px;
+    cursor: pointer;
+    :hover {
+        color: var(--background-color1);
+        color: var(--background-color);
+    }   transition: 0.2s;
+}
+
+button:hover {
+    background-color: var(--background-color);
+    color: var(--background-color1);
+}
+
+.square {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    background-color: var(--background-color);
+    animation-name: move, fade;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.square:nth-child(2) {
+    animation-name: move, fade;
+    animation-duration: 2s;
+}
+
+.square:nth-child(3) {
+    animation-name: move, fade;
+    animation-duration: 3s;
+}
+
+.square:nth-child(4) {
+    animation-name: move, fade;
+    animation-duration: 4s;
+}
+
+.square.paused {
+    animation-play-state: paused;
+}
+
+@keyframes move {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(100vw - 140px));
+    }
+
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
