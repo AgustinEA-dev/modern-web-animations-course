@@ -1,8 +1,9 @@
 :root {
     --background-color: greenyellow;
     --background-color1: teal;
+    --background-color2: #a52779;
 
-    --font-size: 30px;
+    --font-size: 18px;
 }
 
 * {
@@ -15,7 +16,14 @@ body {
     background-color: #1d1d1d;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
         Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    padding: 20px;
+}
+
+h2 {
+    margin: 60px 20px ;
+    font-size: 60px;
+    font-family: fantasy;
+    letter-spacing: 20px;
+    color: var(--background-color1);
 }
 
 .button-container {
@@ -23,26 +31,8 @@ body {
     justify-content: center;
 }
 
-button {
-    width: 90%;
-    margin: 20px;
-    padding: 15px;
-    border: none;
-    background-color: var(--background-color1);
-    color: var(--background-color);
-    font-size: var(--font-size);
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    letter-spacing: 30px;
-    cursor: pointer;
-    :hover {
-        color: var(--background-color1);
-        color: var(--background-color);
-    }   transition: 0.2s;
-}
-
-button:hover {
-    background-color: var(--background-color);
-    color: var(--background-color1);
+.squares-container {
+    height: 500px;
 }
 
 .square {
@@ -50,30 +40,82 @@ button:hover {
     height: 100px;
     margin: 10px;
     background-color: var(--background-color);
-    animation-name: move, fade;
-    animation-duration: 1s;
+    animation-name: move, fade, bounce, changeColor;
+    animation-duration: 1s, 1s, 1s, 4s;
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+    position: relative;
 }
 
 .square:nth-child(2) {
-    animation-name: move, fade;
-    animation-duration: 2s;
+    animation-name: move, fade, bounce, changeColor;
+    animation-duration: 2s, 0.5s, 1s, 0.5s;
+    position: relative;
 }
 
 .square:nth-child(3) {
-    animation-name: move, fade;
-    animation-duration: 3s;
+    animation-name: move, fade, bounce, changeColor;
+    animation-duration: 3s, 0.7s, 0.5s, 2s;
+    position: relative;
+
 }
 
 .square:nth-child(4) {
-    animation-name: move, fade;
+    animation-name: move, fade, bounce, changeColor;
     animation-duration: 4s;
+    position: relative;
 }
 
 .square.paused {
     animation-play-state: paused;
+}
+
+button {
+    width: 90%;
+    padding: 15px;
+    border: none;
+    background-color: var(--background-color1);
+    color: var(--background-color);
+    font-size: var(--font-size);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    letter-spacing: 10px;
+    text-align: center;
+    cursor: pointer;
+
+    :hover {
+        color: var(--background-color1);
+        color: var(--background-color);
+    }
+
+    transition: 0.2s;
+}
+
+button:hover {
+    background-color: var(--background-color);
+    color: var(--background-color1);
+}
+
+.board-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.color-board {
+    max-width: 700px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.board-square {
+    width: 100px;
+    height: 100px;
+    background-color: var(--background-color);
+    border: 1px solid black;
 }
 
 @keyframes move {
@@ -87,6 +129,21 @@ button:hover {
 
 }
 
+@keyframes bounce {
+    0% {
+        top: 0;
+    }
+
+    50% {
+        top: 50px
+    }
+
+    100% {
+        top: -100px;
+    }
+
+}
+
 @keyframes fade {
     0% {
         opacity: 0;
@@ -94,5 +151,15 @@ button:hover {
 
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes changeColor {
+    0% {
+        background-color: var(--background-color);
+    }
+
+    100% {
+        background-color: var(--background-color2);
     }
 }
