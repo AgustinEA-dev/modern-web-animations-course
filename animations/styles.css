@@ -135,21 +135,15 @@ button:hover {
     z-index: 1;
 }
 
-.esphere-container {
-    background-color: var(--background-color4);
-    border: 1px solid var(--background-color);
-    margin: 20px;
-}
-
 .esphere {
     width: 100px;
     height: 100px;
     background: radial-gradient(var(--background-color) 1%, var(--background-color4) 70%);
     border-radius: 50%;
-    transition: all 1s;
+    transition: transform 1s;
 }
 
-@keyframes move {
+/* @keyframes move {
     0% {
         transform: translateX(0);
     }
@@ -158,7 +152,7 @@ button:hover {
         transform: translateX(calc(100vw - 140px));
     }
 
-}
+} */
 
 @keyframes bounce {
     0% {

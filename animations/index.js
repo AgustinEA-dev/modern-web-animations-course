@@ -47,14 +47,14 @@ resetBoardButton.addEventListener("click", () => {
     })
 })
 
-//Move Espehere
+//Move Espehere On Click
 
 const esphereContainer = document.querySelector(".esphere-container")
-const esphere = document.querySelector(".esphere")
 
-esphereContainer.addEventListener("click", (e) => {
-    console.log(e.clientY, e.clientX)
+document.addEventListener("click", (e) => {
+    const esphere = document.querySelector(".esphere")
     let x = e.clientX
-    esphere.style.transform = `translateX(${x - esphere.clientWidth / 2}px)`
+    let y = e.clientY
+    esphere.style.transform = `translateX(${x}px) translateY(${y}px)`
 })
 
