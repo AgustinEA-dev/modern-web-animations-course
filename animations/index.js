@@ -53,8 +53,7 @@ const esphereContainer = document.querySelector(".esphere-container")
 
 document.addEventListener("click", (e) => {
     const esphere = document.querySelector(".esphere")
-    let x = e.clientX
-    let y = e.clientY
+    let x = e.screenX
+    let y = e.screenY
     esphere.style.transform = `translateX(${x}px) translateY(${y}px)`
 })
-

@@ -4,8 +4,10 @@
     --background-color2: #a52779;
     --background-color3: #7fffd4;
     --background-color4: #1d1d1d;
+    --background-color5: #04b0a2;
 
     --font-size: 18px;
+    --font-size1: 16px;
 }
 
 * {
@@ -18,6 +20,7 @@ body {
     background-color: var(--background-color4);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
         Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    overflow-x: hidden;
 }
 
 h2 {
@@ -35,7 +38,7 @@ h2 {
 .square {
     width: 100px;
     height: 100px;
-    margin: 10px;
+    margin: 20px;
     background-color: var(--background-color);
     animation-name: move, fade, bounce, changeColor;
     animation-duration: 3s, 1s, 2s, 4s;
@@ -135,15 +138,61 @@ button:hover {
     z-index: 1;
 }
 
-.esphere {
-    width: 100px;
-    height: 100px;
-    background: radial-gradient(var(--background-color) 1%, var(--background-color4) 70%);
-    border-radius: 50%;
-    transition: transform 1s;
+.container {
+    background-color: var(--background-color4);
+    animation: changeBg;
+    animation-timeline: scroll(self);
 }
 
-/* @keyframes move {
+.background-container {
+    width: 100%;
+    height: 200vh;
+    background-color: var(--background-color4);
+    animation: changeBg;
+    animation-timeline: scroll();
+}
+
+.frame {
+    display: flex;
+    width: 70%;
+    height: 558px;
+    margin: 100px auto;
+    border: 1px solid var(--background-color);
+    perspective: 800px;
+}
+
+.shape {
+    width: 50%;
+    height: 558px;
+    background-color: var(--background-color5);
+    view-timeline-name: --shape;
+    view-timeline-axis: block;
+    animation-timeline: --shape;
+    animation-name: changePerspective;
+    animation-range: entry 25% cover 50%;
+    animation-fill-mode: both;
+}
+
+.secondary-shape {
+    width: 100px;
+    height: 100px;
+    margin: 0 100px;
+    background-color: var(--background-color2);
+    view-timeline-name: --secondary-shape;
+    view-timeline-axis: block;
+    animation-timeline: --secondary-shape;
+    animation-name: changePerspective;
+    animation-range: entry 25% cover 50%;
+    animation-fill-mode: both;
+}
+
+.next-animation {
+    width: 100%;
+    height: 500px;
+    z-index: 2;
+}
+
+@keyframes move {
     0% {
         transform: translateX(0);
     }
@@ -152,7 +201,7 @@ button:hover {
         transform: translateX(calc(100vw - 140px));
     }
 
-} */
+}
 
 @keyframes bounce {
     0% {
@@ -186,5 +235,22 @@ button:hover {
 
     100% {
         background-color: var(--background-color2);
+    }
+}
+
+@keyframes changeBg {
+    to {
+        background-color: var(--background-color5);
+    }
+}
+
+@keyframes changePerspective {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+        transform: rotateY(180deg);
     }
 }
