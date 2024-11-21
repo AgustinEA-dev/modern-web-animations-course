@@ -1,4 +1,4 @@
-//Animated squares/Keyframes
+//Animated Squares/Keyframes
 
 const puaseButton = document.querySelector(".pause")
 const square = document.querySelectorAll(".square")
@@ -7,12 +7,12 @@ puaseButton.addEventListener("click", () => {
     square.forEach((square) => square.classList.toggle("paused"))
 })
 
-//Color board/EventDelegation
+//Color Board/EventDelegation
 
 const boardContainer = document.querySelector(".color-board")
 const resetBoardButton = document.querySelector(".reset-button")
 
-for (let i = 0; i < 21; i++) {
+for (let i = 0; i < 16; i++) {
     const boardSquare = document.createElement("div")
     boardSquare.classList.add("board-square")
     boardContainer.appendChild(boardSquare)
@@ -47,13 +47,6 @@ resetBoardButton.addEventListener("click", () => {
     })
 })
 
-//Move Espehere On Click
+// AOS scroll library
 
-const esphereContainer = document.querySelector(".esphere-container")
-
-document.addEventListener("click", (e) => {
-    const esphere = document.querySelector(".esphere")
-    let x = e.screenX
-    let y = e.screenY
-    esphere.style.transform = `translateX(${x}px) translateY(${y}px)`
-})
+const aosDivContainer = document.querySelector() 
