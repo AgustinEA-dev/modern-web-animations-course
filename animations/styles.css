@@ -16,7 +16,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    border: 1px solid red;
 }
 
 body {
@@ -161,7 +160,7 @@ button:hover {
     height: 600px;
     margin: 60px auto;
     border: 1px solid var(--background-color);
-    perspective: 3000px;
+    perspective: 5000px;
 }
 
 .shape {
