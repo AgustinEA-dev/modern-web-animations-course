@@ -8,14 +8,16 @@
 
     --font-size: 10px;
     --font-size1: 18px;
-    --font-size2: 30px;
-    --font-size3: 40px;
+    --font-size2: 20px;
+    --font-size3: 30px;
+    --font-size4: 40px;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* border: 1px solid red; */
 }
 
 body {
@@ -23,6 +25,35 @@ body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
         Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     overflow-x: hidden;
+}
+
+h1 {
+    text-align: center;
+    margin: 40px 20px;
+    font-family: "Funnel Display", sans-serif;
+    font-size: var(--font-size4);
+    background-image: url(./assets/background-h1\ \(20241122072918\).jpg);
+    background-size: cover;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+}
+
+ul {
+    display: flex;
+    gap: 40px;
+    color: var(--background-color);
+}
+
+li {
+    list-style: none;
+    cursor: pointer;
 }
 
 h2 {
@@ -34,6 +65,8 @@ h2 {
     color: var(--background-color1);
 }
 
+/* KEY FRAMES */
+
 .squares-container {
     height: 470px;
 }
@@ -44,6 +77,7 @@ h2 {
     margin: 20px;
     background-color: var(--background-color);
     animation-name: move, fade, bounce, changeColor;
+    animation-delay: 2s;
     animation-duration: 3s, 1s, 2s, 4s;
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
@@ -78,21 +112,15 @@ h2 {
 .reset-button-container {
     display: flex;
     justify-content: center;
-    margin: 70px;
 }
 
-.reset-button-container {}
-
 button {
-    width: 100%;
     padding: 15px;
+    margin-top: 40px;
     border: none;
     background-color: var(--background-color1);
     color: var(--background-color);
     font-size: var(--font-size);
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    letter-spacing: 5px;
-    text-align: center;
     cursor: pointer;
 
     :hover {
@@ -107,6 +135,8 @@ button:hover {
     background-color: var(--background-color);
     color: var(--background-color1);
 }
+
+/* EVENT DELEGATION */
 
 .board-container {
     display: flex;
@@ -139,6 +169,8 @@ button:hover {
     background-color: var(--background-color3);
     z-index: 1;
 }
+
+/* USING PERSPECTIVE AND SCROLL() */
 
 .container {
     background-color: var(--background-color4);
@@ -175,8 +207,11 @@ button:hover {
     animation-fill-mode: both;
 }
 
+/* ANIMATIONS - USING AOS LIBRARY
+(clip-path) */
+
 .aos-divs-container {
-    width: 70%;
+    width: 50%;
     margin: 60px auto;
     display: flex;
     justify-content: center;
@@ -184,10 +219,43 @@ button:hover {
     flex-wrap: wrap;
 }
 
-.shapes {
-    width: 400px;
-    height: 400px;
+.aos-div {
+    width: 150px;
+    height: 150px;
+    background-image: linear-gradient(var(--background-color2), var(--background-color));
+    margin: 20px;
 }
+
+.aos-div:nth-child(1) {
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+}
+
+.aos-div:nth-child(2) {
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.aos-div:nth-child(3) {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
+}
+
+.aos-div:nth-child(4) {
+    clip-path: polygon(50% 0%, 83% 12%, 100% 43%, 94% 78%, 68% 100%, 32% 100%, 6% 78%, 0% 43%, 17% 12%);
+}
+
+.aos-div:nth-child(5) {
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.aos-div:nth-child(6) {
+    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+}
+
+section {
+    width: 100%;
+    height: 200px;
+}
+
+/* Declaration of keyframes */
 
 @keyframes move {
     0% {
@@ -232,7 +300,7 @@ button:hover {
     }
 
     100% {
-        background-color: var(--background-color2);
+        background-color: var(--background-color1);
     }
 }
 
@@ -253,15 +321,23 @@ button:hover {
     }
 }
 
-
+/* Media queries */
 
 @media (max-width: 690px) {
     .frame {
         height: 500px;
     }
+
+    .aos-divs-container {
+        width: 80%;
+    }
 }
 
 @media (max-width: 590px) {
+    nav {
+        display: none;
+    }
+
     h2 {
         font-size: var(--font-size3);
     }
@@ -287,16 +363,24 @@ button:hover {
 }
 
 @media (max-width: 390px) {
+    h1 {
+        font-size: var(--font-size3);
+    }
+
     .board-square {
         width: 70px;
         height: 70px;
     }
+
+    .aos-div {
+        width: 60px;
+        height: 60px;
+    }
 }
 
 @media (max-width: 290px) {
-    .board-square {
-        width: 50px;
-        height: 50px;
+    h1 {
+        font-size: var(--font-size2);
     }
 
     button {
@@ -305,5 +389,10 @@ button:hover {
 
     h2 {
         font-size: var(--font-size2);
+    }
+
+    .board-square {
+        width: 50px;
+        height: 50px;
     }
 }
