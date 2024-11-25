@@ -15,8 +15,8 @@
     --font-size2: 20px;
     --font-size3: 30px;
     --font-size4: 40px;
-    --neon-font-main: 100px;
-    --neon-font1: 60px;
+    --neon-font-main: 140px;
+    --neon-font1: 100px;
 }
 
 * {
@@ -515,10 +515,6 @@ button:hover {
         height: 400px;
     }
 
-    .logo b {
-        font-size: var(--neon-font1)
-    }
-
     .aos-div {
         width: 60px;
         height: 60px;
@@ -568,6 +564,11 @@ button:hover {
 
     h2 {
         font-size: var(--font-size1);
+    }
+
+    
+    .logo b {
+        font-size: var(--neon-font1)
     }
 
     .board-square {
