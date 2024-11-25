@@ -1,11 +1,3 @@
-//Animated Squares/Keyframes
-
-const puaseButton = document.querySelector(".pause")
-const square = document.querySelectorAll(".square")
-
-puaseButton.addEventListener("click", () => {
-    square.forEach((square) => square.classList.toggle("paused"))
-})
 
 //Color Board/EventDelegation
 
@@ -43,6 +35,20 @@ resetBoardButton.addEventListener("click", () => {
     const allSquares = document.querySelectorAll(".board-square")
     allSquares.forEach(square => {
         square.classList.remove("board-square-flip")
-        square.style.backgroundColor = "var(--background-color)"
+        square.style.backgroundColor = "var(--background-color4)"
+    })
+})
+
+//Animated Squares/Keyframes
+
+const playButton = document.querySelector(".play-button")
+const square = document.querySelectorAll(".square")
+
+playButton.addEventListener("click", () => {
+    square.forEach((square) => {
+        square.classList.toggle("running")
+        if (square.classList.contains("running")) {
+            playButton.innerText = "PAUSE ANIMATION"
+        } else playButton.innerText = "START ANIMATION"
     })
 })

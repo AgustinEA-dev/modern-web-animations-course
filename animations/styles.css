@@ -3,14 +3,20 @@
     --background-color1: #008080;
     --background-color2: #a52779;
     --background-color3: #7fffd4;
-    --background-color4: #1d1d1d;
+    --background-color4: #0f0f0f;
     --background-color5: #04b0a2;
+    --background-color6: #000000;
+    --background-color7: #ffffff;
+    --background-color8: #1c77ff;
+
 
     --font-size: 10px;
     --font-size1: 18px;
     --font-size2: 20px;
     --font-size3: 30px;
     --font-size4: 40px;
+    --neon-font-main: 100px;
+    --neon-font1: 60px;
 }
 
 * {
@@ -18,6 +24,10 @@
     padding: 0;
     box-sizing: border-box;
     /* border: 1px solid red; */
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -41,13 +51,20 @@ h1 {
 }
 
 nav {
+    position: sticky;
+    top: 0;
+    z-index: 2;
     display: flex;
     justify-content: center;
+    background-color: black;
 }
 
 ul {
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 40px;
+    padding: 20px;
     color: var(--background-color);
 }
 
@@ -56,85 +73,47 @@ li {
     cursor: pointer;
 }
 
+a {
+    color: var(--background-color1);
+    text-decoration: none;
+    text-align: center;
+    position: relative;
+    width: max-content;
+}
+
+a::before {
+    content: "";
+    background-color: var(--background-color);
+    width: 0;
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    margin: -3px 0;
+    transition: 200ms;
+}
+
+a:hover::before {
+    width: 100%;
+}
+
+
+a:hover {
+    color: var(--background-color);
+}
+
 h2 {
-    margin: 60px 20px;
-    font-size: px;
+    background-image: linear-gradient(to right, var(--background-color3), var(--background-color1));
+    background-size: cover;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    padding: 70px 0 30px;
+    font-size: var(--font-size3);
     font-family: "Roboto Condensed", serif;
     font-size: var(--font-size3);
     text-align: center;
-    color: var(--background-color1);
 }
 
-/* KEY FRAMES */
-
-.squares-container {
-    height: 470px;
-}
-
-.square {
-    width: 80px;
-    height: 80px;
-    margin: 20px;
-    background-color: var(--background-color);
-    animation-name: move, fade, bounce, changeColor;
-    animation-delay: 2s;
-    animation-duration: 3s, 1s, 2s, 4s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    position: relative;
-}
-
-.square:nth-child(2) {
-    animation-name: move, fade, bounce, changeColor;
-    animation-duration: 5s, 0.5s, 1s, 0.5s;
-    position: relative;
-}
-
-.square:nth-child(3) {
-    animation-name: move, fade, bounce, changeColor;
-    animation-duration: 6s, 0.7s, 0.5s, 2s;
-    position: relative;
-
-}
-
-.square:nth-child(4) {
-    animation-name: move, fade, bounce, changeColor;
-    animation-duration: 4s;
-    position: relative;
-}
-
-.square.paused {
-    animation-play-state: paused;
-}
-
-.button-container,
-.reset-button-container {
-    display: flex;
-    justify-content: center;
-}
-
-button {
-    padding: 15px;
-    margin-top: 40px;
-    border: none;
-    background-color: var(--background-color1);
-    color: var(--background-color);
-    font-size: var(--font-size);
-    cursor: pointer;
-
-    :hover {
-        color: var(--background-color1);
-        color: var(--background-color);
-    }
-
-    transition: 0.2s;
-}
-
-button:hover {
-    background-color: var(--background-color);
-    color: var(--background-color1);
-}
 
 /* EVENT DELEGATION */
 
@@ -143,6 +122,7 @@ button:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 20px;
 }
 
 .color-board {
@@ -157,8 +137,8 @@ button:hover {
 .board-square {
     width: 100px;
     height: 100px;
-    background-color: var(--background-color);
-    border: 1px solid var(--background-color4);
+    background-color: var(--background-color4);
+    border: 1px solid var(--background-color);
     transition: all 0.5s;
     transition-behavior: allow-discrete;
     cursor: pointer;
@@ -168,43 +148,6 @@ button:hover {
     transform: rotate(45deg);
     background-color: var(--background-color3);
     z-index: 1;
-}
-
-/* USING PERSPECTIVE AND SCROLL() */
-
-.container {
-    background-color: var(--background-color4);
-    animation: changeBg;
-    animation-timeline: scroll(self);
-}
-
-.background-container {
-    width: 100%;
-    height: 200vh;
-    background-color: var(--background-color4);
-    animation: changeBg;
-    animation-timeline: scroll();
-}
-
-.frame {
-    display: flex;
-    width: 60%;
-    height: 600px;
-    margin: 60px auto;
-    border: 1px solid var(--background-color);
-    perspective: 5000px;
-}
-
-.shape {
-    width: 100%;
-    height: 100%;
-    background-color: var(--background-color5);
-    view-timeline-name: --shape;
-    view-timeline-axis: block;
-    animation-timeline: --shape;
-    animation-name: changePerspective;
-    animation-range: entry 25% cover 50%;
-    animation-fill-mode: both;
 }
 
 /* ANIMATIONS - USING AOS LIBRARY
@@ -220,10 +163,9 @@ button:hover {
 }
 
 .aos-div {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     background-image: linear-gradient(var(--background-color2), var(--background-color));
-    margin: 20px;
 }
 
 .aos-div:nth-child(1) {
@@ -250,10 +192,191 @@ button:hover {
     clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
 }
 
-section {
-    width: 100%;
-    height: 200px;
+/* KEY FRAMES */
+
+.squares-container {
+    height: 470px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
+
+.square {
+    width: 70px;
+    height: 70px;
+    margin: 20px;
+    background-color: var(--background-color);
+    animation-name: move, fade, changeColor;
+    animation-duration: 3s, 1s, 2s, 4s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-play-state: paused;
+    position: relative;
+}
+
+.square:nth-child(2) {
+    animation-name: move, fade, bounce, changeColor;
+    animation-duration: 5s, 0.5s, 1s, 0.5s;
+    position: relative;
+}
+
+.square:nth-child(3) {
+    animation-name: move, fade, bounce, changeColor;
+    animation-duration: 6s, 0.7s, 0.5s, 2s;
+    position: relative;
+
+}
+
+.square:nth-child(4) {
+    animation-name: move, fade, bounce, changeColor;
+    animation-duration: 4s;
+    position: relative;
+}
+
+.square.running {
+    animation-play-state: running;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+}
+
+button {
+    width: 50%;
+    padding: 15px;
+    border: none;
+    background-color: var(--background-color1);
+    color: var(--background-color);
+    font-size: var(--font-size);
+    cursor: pointer;
+
+    :hover {
+        color: var(--background-color1);
+        color: var(--background-color);
+    }
+
+    transition: 0.2s;
+}
+
+button:hover {
+    background-color: var(--background-color);
+    color: var(--background-color1);
+}
+
+/* USING PERSPECTIVE AND SCROLL() */
+
+.container {
+    background-color: var(--background-color4);
+    animation: changeBg;
+    animation-timeline: scroll(self);
+}
+
+.background-container {
+    width: 100%;
+    height: 200vh;
+    background-color: var(--background-color4);
+    animation: changeBg;
+    animation-timeline: scroll();
+}
+
+.frame {
+    display: flex;
+    width: 60%;
+    height: 400px;
+    margin: 40px auto;
+    border: 1px solid var(--background-color);
+    perspective: 5000px;
+}
+
+.shape {
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-color5);
+    background-image: url(./assets/cave-canem.webp);
+    background-size: contain;
+    background-position: center;
+    background-blend-mode: darken;
+    view-timeline-name: --shape;
+    view-timeline-axis: block;
+    animation-timeline: --shape;
+    animation-name: changePerspective;
+    animation-range: entry 25% cover 40%;
+    animation-fill-mode: both;
+}
+
+
+/* NEON SIGN */
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-width: 65%;
+    height: 250px;
+    margin: auto;
+    user-select: none;
+}
+
+.logo b {
+    font-family: "Courgette", cursive;
+    font-size: var(--neon-font-main);
+    color: #fee;
+    text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em var(--background-color8), 0 0 0.5em var(--background-color8), 0 0 0.1em var(--background-color8), 0 10px 3px var(--background-color6);
+}
+
+.logo b span {
+    animation: blink linear infinite 2s;
+}
+
+.logo b span:nth-of-type(2) {
+    animation: blink linear infinite 3s;
+}
+
+@keyframes blink {
+    78% {
+        color: inherit;
+        text-shadow: inherit;
+    }
+
+    79% {
+        color: #333;
+    }
+
+    80% {
+
+        text-shadow: none;
+    }
+
+    81% {
+        color: inherit;
+        text-shadow: inherit;
+    }
+
+    82% {
+        color: #333;
+        text-shadow: none;
+    }
+
+    83% {
+        color: inherit;
+        text-shadow: inherit;
+    }
+
+    92% {
+        color: #333;
+        text-shadow: none;
+    }
+
+    92.5% {
+        color: inherit;
+        text-shadow: inherit;
+    }
+}
+
 
 /* Declaration of keyframes */
 
@@ -286,11 +409,11 @@ section {
 
 @keyframes fade {
     0% {
-        opacity: 0;
+        opacity: 1;
     }
 
     100% {
-        opacity: 1;
+        opacity: 0;
     }
 }
 
@@ -321,9 +444,58 @@ section {
     }
 }
 
+@keyframes blink {
+    78% {
+        color: inherit;
+        text-shadow: inherit;
+    }
+
+    79% {
+        color: #333;
+    }
+
+    80% {
+
+        text-shadow: none;
+    }
+
+    81% {
+        color: inherit;
+        text-shadow: inherit;
+    }
+
+    82% {
+        color: #333;
+        text-shadow: none;
+    }
+
+    83% {
+        color: inherit;
+        text-shadow: inherit;
+    }
+
+    92% {
+        color: #333;
+        text-shadow: none;
+    }
+
+    92.5% {
+        color: inherit;
+        text-shadow: inherit;
+    }
+}
+
 /* Media queries */
 
 @media (max-width: 690px) {
+    h2 {
+        padding: 20px;
+    }
+
+    nav {
+        position: unset;
+    }
+
     .frame {
         height: 500px;
     }
@@ -334,9 +506,6 @@ section {
 }
 
 @media (max-width: 590px) {
-    nav {
-        display: none;
-    }
 
     h2 {
         font-size: var(--font-size3);
@@ -345,6 +514,16 @@ section {
     .frame {
         height: 400px;
     }
+
+    .logo b {
+        font-size: var(--neon-font1)
+    }
+
+    .aos-div {
+        width: 60px;
+        height: 60px;
+    }
+
 }
 
 @media (max-width: 490px) {
@@ -367,15 +546,15 @@ section {
         font-size: var(--font-size3);
     }
 
+    h2 {
+        font-size: var(--font-size2);
+    }
+
     .board-square {
         width: 70px;
         height: 70px;
     }
 
-    .aos-div {
-        width: 60px;
-        height: 60px;
-    }
 }
 
 @media (max-width: 290px) {
@@ -388,7 +567,7 @@ section {
     }
 
     h2 {
-        font-size: var(--font-size2);
+        font-size: var(--font-size1);
     }
 
     .board-square {
