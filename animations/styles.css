@@ -328,7 +328,7 @@ button:hover {
     min-width: 65%;
     height: 250px;
     margin: auto;
-    padding: 200px;
+    /* padding: 200px; */
     user-select: none;
 }
 
@@ -518,9 +518,9 @@ button:hover {
 /* Media queries */
 
 @media (max-width: 690px) {
-    h2 {
+    /* h2 {
         padding: 20px;
-    }
+    } */
 
     nav {
         position: unset;
@@ -557,6 +557,7 @@ button:hover {
 }
 
 @media (max-width: 490px) {
+    
     .board-square {
         width: 80px;
         height: 80px;
