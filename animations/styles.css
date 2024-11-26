@@ -31,7 +31,7 @@ html {
 }
 
 body {
-    background-color: var(--background-color4);
+    background-color: var(--background-color6);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
         Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     overflow-x: hidden;
@@ -39,7 +39,8 @@ body {
 
 h1 {
     text-align: center;
-    margin: 40px 20px;
+    margin: 70px auto 0;
+    width: 70%;
     font-family: "Funnel Display", sans-serif;
     font-size: var(--font-size4);
     background-image: url(./assets/background-h1\ \(20241122072918\).jpg);
@@ -57,6 +58,15 @@ nav {
     display: flex;
     justify-content: center;
     background-color: black;
+}
+
+nav::after {
+    content: "";
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(to right, var(--background-color), var(--background-color8));
 }
 
 ul {
@@ -107,7 +117,7 @@ h2 {
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-    padding: 70px 0 30px;
+    padding: 70px 0 40px;
     font-size: var(--font-size3);
     font-family: "Roboto Condensed", serif;
     font-size: var(--font-size3);
@@ -122,7 +132,7 @@ h2 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    /* padding: 20px; */
 }
 
 .color-board {
@@ -245,7 +255,7 @@ h2 {
 }
 
 button {
-    width: 50%;
+    width: 30%;
     padding: 15px;
     border: none;
     background-color: var(--background-color1);
@@ -318,6 +328,7 @@ button:hover {
     min-width: 65%;
     height: 250px;
     margin: auto;
+    padding: 200px;
     user-select: none;
 }
 
@@ -334,6 +345,25 @@ button:hover {
 
 .logo b span:nth-of-type(2) {
     animation: blink linear infinite 3s;
+}
+
+/* BEFORE AND AFTER */
+
+.before-after-h2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--background-color1);
+    position: relative;
+}
+
+.before-after-h2::before {
+    content: "";
+    width: 10px;
+    height: 2px;
+    background: linear-gradient(to right, var(--background-color), var(--background-color8));
+    position: absolute;
+    bottom: 0;
 }
 
 @keyframes blink {
@@ -503,6 +533,10 @@ button:hover {
     .aos-divs-container {
         width: 80%;
     }
+
+    button{
+        width: 70%;
+    }
 }
 
 @media (max-width: 590px) {
@@ -551,6 +585,10 @@ button:hover {
         height: 70px;
     }
 
+    .logo b {
+        font-size: var(--neon-font1)
+    }
+
 }
 
 @media (max-width: 290px) {
@@ -564,11 +602,6 @@ button:hover {
 
     h2 {
         font-size: var(--font-size1);
-    }
-
-    
-    .logo b {
-        font-size: var(--neon-font1)
     }
 
     .board-square {
