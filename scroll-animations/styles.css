@@ -8,14 +8,16 @@ body {
     timeline-scope: --container-timeline
 }
 
+
+
 .container {
     height: 50vh;
     flex: 1;
     overflow: auto;
     background-color: #100e1e;
     scroll-timeline: --container-timeline block;
-    animation: changeBg 1s;
-    animation-timeline: scroll(self);
+    animation: changeBg 1s both;
+    animation-timeline: --container2-timeline;
 }
 
 .container-2 {
@@ -23,10 +25,10 @@ body {
     flex: 1;
     overflow: auto;
     background-color: #285f32;
+    scroll-timeline: --container2-timeline;
 }
 
 .content {
-
     padding: 30px;
     max-width: 700px;
     margin: 0 auto;
@@ -37,14 +39,9 @@ body {
     height: 100px;
     background-color: gold;
     animation: linear move both;
-    animation-timeline: --container-timeline;
+    animation-timeline: --container2-timeline;
     position: sticky;
     top: 0;
-}
-
-.square-2 {
-    margin: 70px;
-    animation-timeline: scroll();
 }
 
 @keyframes move {

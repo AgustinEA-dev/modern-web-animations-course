@@ -16,6 +16,12 @@ body {
     background-color: gold;
   }
   
+  .square.pause {
+    animation-play-state: paused;
+  }
+  .square.reverse {
+    animation-direction: alternate-reverse;
+  }
   
   @keyframes moveAndRotate {
     0% {
